@@ -1,0 +1,29 @@
+server:
+  port: 9080
+
+social:
+  twitter:
+    appId: esjfIrueWjCkI5GTnBHx8Usz3
+    appSecret: fD9IglvCfWCe8rgsI2celfPmQyM3rgK5a6smmB8tq5Dhghcz3M
+    token: 989809664341790725-0In3QKPObSMQEZcwvLH8mS16ebo2FGq
+    tokenSecret: WVRHu6QLyLQuKZNzWtM7iqhDWdpzsDj2v3269J9VbZvbb
+    messagesCountLimit: 100
+    streamReaderTimeout: 30000
+    trackedKeyword: the
+
+spring:
+  jackson:
+    serialization:
+      INDENT_OUTPUT: true
+
+  datasource:
+    driverClassName: org.h2.Driver
+    url: jdbc:h2:mem:bootapp;DB_CLOSE_DELAY=-1
+    username: sa
+    password:
+
+logging:
+    file: output.log
+    pattern:
+        console: "%d %-5level %logger : %msg%n"
+        file: "[%d{yyyy-MM-dd HH:mm:ss.SSS}] [%-5level] [%thread] [%logger{16}] - %msg %n"

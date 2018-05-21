@@ -1,12 +1,7 @@
 package org.twitterobserver.service;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.awaitility.Awaitility.await;
 
-import java.util.concurrent.Callable;
-import java.util.concurrent.TimeUnit;
-
-import org.awaitility.Duration;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
