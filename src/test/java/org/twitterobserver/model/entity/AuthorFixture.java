@@ -20,6 +20,4 @@ public class AuthorFixture {
 				.tweets(new TreeSet<>())
 				.build();
 	}
-
-
 }

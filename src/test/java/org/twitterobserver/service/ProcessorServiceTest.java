@@ -35,6 +35,9 @@ public class ProcessorServiceTest {
 	@Mock
 	private ApplicationEventPublisher publisher;
 
+	@Mock
+	private MetricsService metricsService;
+
 	@Test
 	public void shouldDelegate_whenOnApplicationEvent() throws Exception {
 		List<AuthorEntity> expectedRetrievedList = Arrays.asList(AuthorFixture.anAuthor());
@@ -45,6 +48,7 @@ public class ProcessorServiceTest {
 		verify(authorRepo).findAllByOrderByCreationDateAsc();
 		verify(producerService).print(expectedRetrievedList);
 		verify(publisher).publishEvent(any(OutputProducedEvent.class));
+		verify(metricsService).calculateThroughput();
 	}
 
 }

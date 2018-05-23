@@ -17,4 +17,12 @@ public class TweetEntityFixture {
 				.author(author)
 				.build();
 	}
+
+	public static TweetEntity withCreationDate(long creationDate) {
+		return TweetEntity.builder()
+				.messageId(faker.code().imei())
+				.messageContent(faker.harryPotter().quote())
+				.creationDate(creationDate)
+				.build();
+	}
 }

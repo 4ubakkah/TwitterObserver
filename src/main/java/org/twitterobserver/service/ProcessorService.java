@@ -27,28 +27,17 @@ public class ProcessorService {
 	private ProducerService producerService;
 
 	@Autowired
+	private MetricsService metricsService;
+
+	@Autowired
 	private AuthorRepository authorRepo;
-
-	@Autowired
-	private TweetRepository tweetRepository;
-
-	@Autowired
-	private ObjectMapper objectMapper;
 
 	@EventListener
 	public void onApplicationEvent(ConsumptionFinishedPersistedEvent consumptionFinishedEvent) {
-		calculateThroughput();
+		metricsService.calculateThroughput();
+
 		List<AuthorEntity> allAuthors = authorRepo.findAllByOrderByCreationDateAsc();
 		producerService.print(allAuthors);
 		applicationEventPublisher.publishEvent(new OutputProducedEvent(this));
-	}
-
-	private void calculateThroughput() {
-		double messagesCount = tweetRepository.count();
-		double secondsElapsed = (tweetRepository.findFirst1ByOrderByCreationDateDesc().getCreationDate() - tweetRepository.findFirst1ByOrderByCreationDateAsc()
-				.getCreationDate()) / 1000;
-		double messagesPerSecond = messagesCount / secondsElapsed;
-
-		log.info(MarkerFactory.getMarker("metrics"), "Throughput during run is: {}", messagesPerSecond);
 	}
 }
