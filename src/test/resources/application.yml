@@ -9,7 +9,7 @@ social:
     tokenSecret: WVRHu6QLyLQuKZNzWtM7iqhDWdpzsDj2v3269J9VbZvbb
     messagesCountLimit: 100
     streamReaderTimeout: 30000
-    trackedKeyword: the
+    trackedKeyword: bieber
 
 spring:
   jackson:
